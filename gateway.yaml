@@ -1,0 +1,25 @@
+log:
+  logPath:  !!str /data/log/gateway/gateway.log
+  level: !!str info
+  encoding: !!str json
+  output_console: !!bool true
+
+server:
+  port: !!int 9999  
+  sign_key: !!str 62F8EA91-5180-7C55-2713-B970943696D6
+
+jaeger:
+  type: !!str rateLimiting
+  type_parm: !!float 100
+  log_spans: !!bool true
+  buffer_flush_interval: 1s
+  queue_size: 2000
+  agent_addr: !!str 127.0.0.1:6831
+  
+auth:
+  verify_token: !!str community.interface.XXXLoginServer/VerifyToken
+  skip_token:
+    - !!str community.interface.XXXLoginServer/SendVerifyCode  
+    - !!str community.interface.XXXLoginServer/Login  
+
+
